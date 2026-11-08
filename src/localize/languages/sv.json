@@ -1,0 +1,49 @@
+{
+  "common": {
+    "version": "Version",
+    "loading": "Hämtar avgångar"
+  },
+  "errors": {
+    "invalid_configuration": "Ogiltig konfiguration.",
+    "client_id_required": "Klient-ID måste anges.",
+    "client_secret_required": "Klienthemlighet måste anges.",
+    "stop_required": "Antingen GID eller hållplatsnamn måste anges.",
+    "height_positive": "Tidtabellens höjd måste vara mellan 100 och 1000 pixlar.",
+    "limit_positive": "Antalet avgångar måste vara ett heltal mellan 1 och 100.",
+    "refresh_positive": "Uppdateringsintervallet måste vara mellan 10 och 3600 sekunder.",
+    "language_invalid": "Språket måste vara sv eller en.",
+    "fetch_failed": "Kunde inte hämta avgångar: {message}",
+    "api_response_invalid": "API:et returnerade ett ogiltigt svar.",
+    "request_timeout": "Begäran tog för lång tid.",
+    "automation_entity_invalid": "Avgångsautomationen måste vara ett entitets-ID för en automation.",
+    "departure_trigger_minutes_invalid": "Minuter före avgång måste vara ett heltal mellan 1 och 60.",
+    "automation_trigger_failed": "Kunde inte köra avgångsautomationen: {message}",
+    "automation_not_found": "Automationen {entity} kunde inte hittas."
+  },
+  "timetable": {
+    "line": "Linje",
+    "platform": "Läge",
+    "direction": "Riktning",
+    "next": "Nästa",
+    "following": "Därefter"
+  },
+  "editor": {
+    "language": "Språk",
+    "language_automatic": "Automatiskt (Home Assistants språk)",
+    "language_swedish": "Svenska",
+    "language_english": "Engelska",
+    "stop_name": "Hållplatsnamn",
+    "stop_name_help": "Används för att hitta en hållplats när GID saknas.",
+    "gid": "Hållplatsens GID",
+    "gid_help": "När GID anges används det i stället för hållplatsnamnet.",
+    "client_id": "Klient-ID",
+    "client_secret": "Klienthemlighet",
+    "credentials_warning": "Inloggningsuppgifterna lagras i Home Assistant-konfigurationen och används i din webbläsare.",
+    "time_table_height": "Tidtabellens höjd (px)",
+    "limit": "Antal avgångar",
+    "refresh_interval": "Uppdateringsintervall (sekunder)",
+    "automation_entity": "Avgångsautomation",
+    "automation_entity_help": "Valfritt. Körs för fästa resor medan instrumentpanelen är igång. Automationens villkor kontrolleras, men vanliga utlösardata är inte tillgängliga.",
+    "departure_trigger_minutes": "Minuter före avgång"
+  }
+}

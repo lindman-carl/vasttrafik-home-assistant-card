@@ -1,0 +1,23 @@
+- id: '1793725787469'
+  alias: Ny automatisering
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: notify.persistent_notification
+    metadata: {}
+    data:
+      message: Hej hej
+  mode: single
+- id: '1793740725390'
+  alias: auto
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: notify.persistent_notification
+    metadata: {}
+    data:
+      message: asd
+      title: asd
+  mode: single

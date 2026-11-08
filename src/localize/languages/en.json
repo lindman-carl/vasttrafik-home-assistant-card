@@ -1,0 +1,49 @@
+{
+  "common": {
+    "version": "Version",
+    "loading": "Loading departures"
+  },
+  "errors": {
+    "invalid_configuration": "Invalid configuration.",
+    "client_id_required": "Client ID is required.",
+    "client_secret_required": "Client secret is required.",
+    "stop_required": "Either a GID or stop name is required.",
+    "height_positive": "Timetable height must be between 100 and 1000 pixels.",
+    "limit_positive": "Departure limit must be an integer between 1 and 100.",
+    "refresh_positive": "Refresh interval must be between 10 and 3600 seconds.",
+    "language_invalid": "Language must be sv or en.",
+    "fetch_failed": "Could not load departures: {message}",
+    "api_response_invalid": "The API returned an invalid response.",
+    "request_timeout": "The request timed out.",
+    "automation_entity_invalid": "Departure automation must be an automation entity ID.",
+    "departure_trigger_minutes_invalid": "Minutes before departure must be an integer between 1 and 60.",
+    "automation_trigger_failed": "Could not run the departure automation: {message}",
+    "automation_not_found": "Automation {entity} was not found."
+  },
+  "timetable": {
+    "line": "Line",
+    "platform": "Platform",
+    "direction": "Direction",
+    "next": "Next",
+    "following": "Following"
+  },
+  "editor": {
+    "language": "Language",
+    "language_automatic": "Automatic (Home Assistant language)",
+    "language_swedish": "Swedish",
+    "language_english": "English",
+    "stop_name": "Stop name",
+    "stop_name_help": "Used to find a stop when no GID is configured.",
+    "gid": "Stop GID",
+    "gid_help": "When set, the GID takes precedence over the stop name.",
+    "client_id": "Client ID",
+    "client_secret": "Client secret",
+    "credentials_warning": "Credentials are stored in the Home Assistant configuration and used in your browser.",
+    "time_table_height": "Timetable height (px)",
+    "limit": "Departure limit",
+    "refresh_interval": "Refresh interval (seconds)",
+    "automation_entity": "Departure automation",
+    "automation_entity_help": "Optional. Runs for pinned journeys while the dashboard is running. Automation conditions are checked, but normal trigger data is not available.",
+    "departure_trigger_minutes": "Minutes before departure"
+  }
+}

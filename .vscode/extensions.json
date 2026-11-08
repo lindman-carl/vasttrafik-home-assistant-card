@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "github.vscode-pull-request-github",
+    "eamodio.gitlens",
+    "biomejs.biome",
+    "bierner.lit-html",
+    "runem.lit-plugin",
+    "auchenberg.vscode-browser-preview",
+    "davidanson.vscode-markdownlint",
+    "redhat.vscode-yaml"
+  ]
+}
