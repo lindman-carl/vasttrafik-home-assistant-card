@@ -6,9 +6,11 @@ A Home Assistant card that shows real-time departures from Västtrafik public tr
 
 ### HACS
 
-1. In HACS, open **Frontend** and select **Explore & Download Repositories**.
-2. Add `lindman-carl/vasttrafik-home-assistant-card` as a custom repository if it is not already listed.
+1. In HACS, open the menu and select **Custom repositories**.
+2. Add `lindman-carl/vasttrafik-home-assistant-card` with the **Dashboard** type (called **Frontend** in older HACS versions).
 3. Download **Västtrafik Home Assistant Card** and refresh your browser.
+
+HACS installs the bundle attached to a published GitHub release. Default-branch downloads are hidden because the repository does not commit the built bundle.
 
 ### Manual
 

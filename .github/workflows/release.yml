@@ -4,6 +4,9 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
   release:
     name: Prepare release
@@ -22,7 +25,14 @@ jobs:
         run: |
           VERSION="${GITHUB_REF_NAME#v}"
 
-          node -e "const version = process.env.VERSION; const semverRegex = /^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$/; if (!semverRegex.test(version)) { console.error(`Invalid release tag '${process.env.GITHUB_REF_NAME}'. Expected semver like '1.2.3' or 'v1.2.3'.`); process.exit(1); }"
+          node <<'NODE'
+          const version = process.env.VERSION;
+          const semverRegex = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$/;
+          if (!semverRegex.test(version)) {
+            console.error(`Invalid release tag '${process.env.GITHUB_REF_NAME}'. Expected semver like '1.2.3' or 'v1.2.3'.`);
+            process.exit(1);
+          }
+          NODE
 
           echo "Release tag is valid semver: $VERSION"
         env:

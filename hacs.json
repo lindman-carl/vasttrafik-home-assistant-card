@@ -1,5 +1,6 @@
 {
   "name": "Västtrafik Home Assistant Card",
   "render_readme": true,
-  "filename": "vasttrafik-home-assistant-card.js"
+  "filename": "vasttrafik-home-assistant-card.js",
+  "hide_default_branch": true
 }
