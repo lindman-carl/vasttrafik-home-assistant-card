@@ -15,7 +15,7 @@ lower-level browser contracts, not Home Assistant user flows; it never mocks HA.
 | pinning: multiple pins, ordering, unpin                                                      | card.spec.ts: multiple pins                                                         |
 | pinning: empty data/stop changes never fabricate rows                                        | card.spec.ts: absent pin persistence                                                |
 | pinning: recreation/localStorage persistence                                                 | card.spec.ts: reload pin persistence                                                |
-| pinning: missing GID cannot pin                                                              | contracts.spec.ts: missing journey GID; pinned-lines.test.ts: empty GID             |
+| pinning: missing GID cannot pin                                                              | contracts.spec.ts: missing journey GID; pinned-departures.test.ts: empty GID        |
 | pinning: highlight 10% alpha without fading badge/text                                       | card.spec.ts: highlight opacity                                                     |
 | pinning: two tables share pins without overwrite                                             | card.spec.ts: multiple cards                                                        |
 | pinning: storage events update connected tables                                              | card.spec.ts: real two-tab pin synchronization                                      |

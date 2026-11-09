@@ -1,7 +1,7 @@
 {
   "name": "vasttrafik-home-assistant-card",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "packageManager": "pnpm@12.16.1",
   "description": "A Home Assistant card showing Västtrafik departures",
   "keywords": [

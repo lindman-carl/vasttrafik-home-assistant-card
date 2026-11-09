@@ -3,7 +3,7 @@ import type { VasttrafikCardConfig } from '../../src/config';
 import type { Departure } from '../../src/departures/types';
 
 export const NOW = new Date('2026-11-03T12:00:00+01:00');
-export const PIN_KEY = 'vasttrafik-home-assistant-card:pinned-lines';
+export const PIN_KEY = 'vasttrafik-home-assistant-card:pinned-departures';
 
 export function departure(gid: string, line: string, minutes: number, overrides: Partial<Departure> = {}): Departure {
   return {

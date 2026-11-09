@@ -1,13 +1,13 @@
 import { css, html, LitElement } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import {
-  PINNED_LINES_STORAGE_KEY,
+  PINNED_DEPARTURES_STORAGE_KEY,
   PINS_CHANGED_EVENT,
-  prioritizePinnedLines,
-  readPinnedLines,
-  savePinnedLines,
-  togglePinnedLine,
-} from '../../departures/pinned-lines';
+  prioritizePinnedDepartures,
+  readPinnedDepartures,
+  savePinnedDepartures,
+  togglePinnedDeparture,
+} from '../../departures/pinned-departures';
 import type { Departure } from '../../departures/types';
 import './time-table-row';
 
@@ -17,21 +17,21 @@ export class VasttrafikTimeTable extends LitElement {
   @property({ type: Number }) public height = 250;
   @property({ type: String }) public language = 'en-US';
 
-  @state() private pinnedLines = readPinnedLines();
+  @state() private pinnedDepartures = readPinnedDepartures();
 
   private readonly onPinsChanged = (event: Event): void => {
-    this.pinnedLines = [...(event as CustomEvent<string[]>).detail];
+    this.pinnedDepartures = [...(event as CustomEvent<string[]>).detail];
   };
 
   private readonly onStorageChanged = (event: StorageEvent): void => {
-    if ((event.key === PINNED_LINES_STORAGE_KEY || event.key === null) && event.storageArea === localStorage) {
-      this.pinnedLines = readPinnedLines();
+    if ((event.key === PINNED_DEPARTURES_STORAGE_KEY || event.key === null) && event.storageArea === localStorage) {
+      this.pinnedDepartures = readPinnedDepartures();
     }
   };
 
   public connectedCallback(): void {
     super.connectedCallback();
-    this.pinnedLines = readPinnedLines();
+    this.pinnedDepartures = readPinnedDepartures();
     window.addEventListener(PINS_CHANGED_EVENT, this.onPinsChanged);
     window.addEventListener('storage', this.onStorageChanged);
   }
@@ -64,9 +64,9 @@ export class VasttrafikTimeTable extends LitElement {
 
   private togglePin(gid?: string): void {
     if (!gid) return;
-    this.pinnedLines = togglePinnedLine(this.pinnedLines, gid);
-    savePinnedLines(this.pinnedLines);
-    window.dispatchEvent(new CustomEvent<string[]>(PINS_CHANGED_EVENT, { detail: this.pinnedLines }));
+    this.pinnedDepartures = togglePinnedDeparture(this.pinnedDepartures, gid);
+    savePinnedDepartures(this.pinnedDepartures);
+    window.dispatchEvent(new CustomEvent<string[]>(PINS_CHANGED_EVENT, { detail: this.pinnedDepartures }));
   }
 
   protected render() {
@@ -76,13 +76,13 @@ export class VasttrafikTimeTable extends LitElement {
           height: ${this.height}px;
         }
       </style>
-      ${prioritizePinnedLines(this.groupedDepartures, this.pinnedLines).map((departureGroup) => {
+      ${prioritizePinnedDepartures(this.groupedDepartures, this.pinnedDepartures).map((departureGroup) => {
         const gid = departureGroup[0]?.serviceJourney.gid;
         return html`
           <vt-time-table-row
             .departureGroup=${departureGroup}
             .language=${this.language}
-            .pinned=${Boolean(gid && this.pinnedLines.includes(gid))}
+            .pinned=${Boolean(gid && this.pinnedDepartures.includes(gid))}
             ?pinnable=${Boolean(gid)}
             @click=${() => this.togglePin(gid)}
           ></vt-time-table-row>

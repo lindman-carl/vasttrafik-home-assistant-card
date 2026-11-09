@@ -79,7 +79,7 @@ By default, the card follows Home Assistant's selected locale. `sv`, `sv-SE`, an
 
 `client_id` and `client_secret` are stored in the Home Assistant card configuration and used by browser-side code to call the Västtrafik API. They are not secret from users who can inspect the dashboard configuration or browser runtime. The visual editor's password input only masks the displayed value; it does not encrypt it.
 
-## Pinning lines
+## Pinning departures
 
 Click a timetable row to pin it to the top; click it again to unpin. Multiple rows can be pinned. Pins use `serviceJourney.gid` and are saved as an array in your browser's localStorage, surviving page reloads and stop changes on the same Home Assistant origin. Rows with the same journey GID share a pin; other journeys on the same line do not. Pins are not synced between browsers or devices.
 

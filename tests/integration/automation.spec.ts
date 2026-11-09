@@ -75,7 +75,9 @@ for (const minutes of [4, 5]) {
 }
 
 test('opening with an already-pinned below-threshold journey does not trigger', async ({ page, api }) => {
-  await page.evaluate(() => localStorage.setItem('vasttrafik-home-assistant-card:pinned-lines', JSON.stringify(['a'])));
+  await page.evaluate(() =>
+    localStorage.setItem('vasttrafik-home-assistant-card:pinned-departures', JSON.stringify(['a'])),
+  );
   api.respond('test-stop', { results: [revised(4)] });
   await setDashboard(page, dashboard([config()]));
   await expect(page.locator('vt-time-table-row[pinned]')).toBeVisible();
@@ -231,11 +233,11 @@ test('storage failure still lets a same-tab pin arm the card', async ({ page }) 
     const getItem = Storage.prototype.getItem;
     const setItem = Storage.prototype.setItem;
     Storage.prototype.getItem = function (key) {
-      if (key === 'vasttrafik-home-assistant-card:pinned-lines') throw new Error('blocked pin storage');
+      if (key === 'vasttrafik-home-assistant-card:pinned-departures') throw new Error('blocked pin storage');
       return getItem.call(this, key);
     };
     Storage.prototype.setItem = function (key, value) {
-      if (key === 'vasttrafik-home-assistant-card:pinned-lines') throw new Error('blocked pin storage');
+      if (key === 'vasttrafik-home-assistant-card:pinned-departures') throw new Error('blocked pin storage');
       setItem.call(this, key, value);
     };
   });

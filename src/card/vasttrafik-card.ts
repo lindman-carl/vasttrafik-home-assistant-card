@@ -15,7 +15,11 @@ import { localize } from '../localize/localize';
 import { HttpError, RequestTimeoutError, ResponseError } from '../api/request';
 import type { StopArea } from '../departures/types';
 import { DepartureTriggerMonitor } from '../departures/departure-trigger';
-import { PINNED_LINES_STORAGE_KEY, PINS_CHANGED_EVENT, readPinnedLines } from '../departures/pinned-lines';
+import {
+  PINNED_DEPARTURES_STORAGE_KEY,
+  PINS_CHANGED_EVENT,
+  readPinnedDepartures,
+} from '../departures/pinned-departures';
 import './components/header';
 import './components/spinner';
 import './components/time-table';
@@ -74,8 +78,8 @@ export class VasttrafikCard extends LitElement {
   };
 
   private readonly onStorageChanged = (event: StorageEvent): void => {
-    if ((event.key === PINNED_LINES_STORAGE_KEY || event.key === null) && event.storageArea === localStorage) {
-      this.pinnedJourneys = readPinnedLines();
+    if ((event.key === PINNED_DEPARTURES_STORAGE_KEY || event.key === null) && event.storageArea === localStorage) {
+      this.pinnedJourneys = readPinnedDepartures();
       this.evaluateDepartureTriggers();
     }
   };
@@ -121,7 +125,7 @@ export class VasttrafikCard extends LitElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
-    this.pinnedJourneys = readPinnedLines();
+    this.pinnedJourneys = readPinnedDepartures();
     window.addEventListener(PINS_CHANGED_EVENT, this.onPinsChanged);
     window.addEventListener('storage', this.onStorageChanged);
     this.restartRefresh();
